@@ -1,0 +1,87 @@
+.bg-orange { background-color: #f97316; }
+.text-orange { color: #f97316; }
+
+.header-hero {
+  height: 60vh;
+  min-height: 500px;
+}
+
+.hero-bg-img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, #0a0a0a, rgba(10, 10, 10, 0.4), transparent);
+}
+
+.author-card-glass {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  width: fit-content;
+}
+
+.author-img-large {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  border: 2px solid #f97316;
+}
+
+.content-intro {
+  background: linear-gradient(to right, rgba(249, 115, 22, 0.1), transparent);
+  border-right: 4px solid #f97316;
+}
+
+.sidebar-widget {
+  background: #111111;
+  border: 1px solid #262626;
+}
+
+.sidebar-link {
+  text-decoration: none;
+  color: #a3a3a3;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px;
+  transition: 0.3s;
+}
+
+.sidebar-link:hover {
+  color: #f97316;
+  background: rgba(249, 115, 22, 0.05);
+  border-radius: 8px;
+}
+
+.index-box {
+  width: 24px;
+  height: 24px;
+  background: #1a1a1a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px;
+  font-size: 0.7rem;
+}
+
+.tag-pill {
+  background: #1a1a1a;
+  border: 1px solid #262626;
+  color: #a3a3a3;
+  padding: 6px 16px;
+  border-radius: 50px;
+  font-size: 0.85rem;
+  transition: 0.3s;
+}
+
+.tag-pill:hover {
+  border-color: #f97316;
+  color: #f97316;
+}

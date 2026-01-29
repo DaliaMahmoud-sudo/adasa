@@ -1,0 +1,126 @@
+
+
+:host {
+  display: block;
+  background-color:  #0a0a0a;
+}
+
+.custom-footer {
+  color: white;
+
+  .logo-icon {
+    width: 44px;
+    height: 44px;
+    background: linear-gradient(135deg, #f97316, #ea580c);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 1.25rem;
+    box-shadow: 0 4px 20px rgba(249, 115, 22, 0.3);
+  }
+
+  .brand-name {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: white;
+  }
+
+  .brand-desc {
+    font-size: 0.875rem;
+    color: #737373;
+    line-height: 1.6;
+  }
+
+  .social-link {
+
+    width: 40px;
+    height: 40px;
+    background-color: #161616;
+    border: 1px solid #262626;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #737373;
+    transition: all 0.3s ease;
+    text-decoration: none;
+  }
+
+
+
+  .footer-heading {
+    font-size: 1rem;
+    font-weight: 600;
+
+    .heading-line {
+      width: 32px;
+      height: 2px;
+      background: linear-gradient(to right,#f97316, #eab308);
+      border-radius: 50px;
+    }
+  }
+
+  .footer-links {
+    a {
+      color: #737373;
+      text-decoration: none;
+      font-size: 0.875rem;
+      display: flex;
+      align-items: center;
+      transition: all 0.3s ease;
+
+      i {
+        font-size: 0.75rem;
+        opacity: 0;
+        margin-left: 10px;
+        transform: translateX(10px);
+        transition: all 0.3s ease;
+        color: #f97316;
+      }
+
+      &:hover {
+        color: #f97316;
+
+        i {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
+    }
+
+    li {
+      margin-bottom: 1rem;
+    }
+  }
+
+  .newsletter-form {
+    .form-control {
+      background-color: #161616;
+      border: 1px solid #262626;
+      border-radius: 12px;
+      padding: 12px;
+      color: white;
+      font-size: 0.875rem;
+
+      &:focus {
+        border-color: #f97316;
+        background-color: #161616;
+      }
+    }
+  }
+
+  .btn-orange {
+    background: linear-gradient(to right, #f97316, #ea580c);
+    border: none;
+    color: white;
+    padding: 12px;
+    border-radius: 12px;
+    font-weight: 500;
+
+    &:hover {
+      opacity: 0.9;
+    }
+  }
+}

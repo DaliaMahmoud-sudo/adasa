@@ -1,0 +1,291 @@
+@if(!flag){
+  <main class="blog-page pt-5">
+  <section class="blog-hero relative-overflow py-5 text-center">
+    <div class="grid-background"></div>
+    <div class="container position-relative z-1">
+      <span class="section-label d-inline-flex align-items-center gap-2 mb-4">
+        <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+            d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z">
+          </path>
+        </svg>
+        مدونتنا
+      </span>
+      <h1 class="display-4 fw-bold text-white mb-3">استكشف <span class="text-gradient">مقالاتنا</span></h1>
+      <p class="lead text-neutral-400 mx-auto" style="max-width: 600px;">اكتشف الدروس والرؤى وأفضل الممارسات للتطوير
+        الحديث</p>
+    </div>
+  </section>
+
+  <nav class="sticky-filter-bar  backdrop-blur">
+    <div class="container py-3">
+      <div class="row g-3 align-items-center justify-content-between">
+        <div class="col-md-4">
+          <div class="search-input-group position-relative">
+            <input type="text" class="form-control input-dark" placeholder="ابحث في المقالات...">
+            <svg class="search-icon" width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+            </svg>
+          </div>
+        </div>
+        <div class="col-md-auto">
+          <div class="d-flex flex-wrap gap-2 justify-content-center">
+            <button (click)="filterByCategory('جميع المقالات')" [class.active-cat]="activeCategory === 'جميع المقالات'"
+              class="btn btn-filter">
+              جميع المقالات
+            </button>
+            @for (cat of categories; track $index) {
+            <button (click)="filterByCategory(cat.name)" class="btn btn-filter"  [class.active-cat]="activeCategory === cat.name">
+              {{cat.name}}
+            </button>
+            }
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <section class="container py-5">
+    <div class="d-flex justify-content-between align-items-center mb-4 text-neutral-400">
+      <p>عرض <span class="text-white fw-bold">{{allPosts.length}}</span> مقالات</p>
+      <div class="view-toggle d-flex bg-dark-card p-1 rounded-3">
+        <button class="btn btn-sm btn-orange-icon"><i class="bi bi-grid-fill"></i></button>
+        <button class="btn btn-sm text-neutral-500"><i class="bi bi-list"></i></button>
+      </div>
+    </div>
+
+    <div class="row g-4">
+      @for (post of paginatedPosts; track $index) {
+      <div class="col-md-6 col-lg-4"  (click)="clickspecificpost(post.id)">
+        <article class="post-card group">
+          <div class="image-wrapper">
+            <img [src]="post.image" [alt]="post.title" class="card-img-top">
+            <span class="category-tag">{{post.category}}</span>
+          </div>
+
+          <div class="card-content p-4">
+            <div class="meta-data d-flex align-items-center gap-2 mb-3">
+              <span class="d-flex align-items-center gap-1"><i class="bi bi-clock"></i> {{post.readTime}}</span>
+              <span class="dot"></span>
+              <span>{{post.date}}</span>
+            </div>
+
+            <h3 class="post-title h5 mb-3">{{post.title}}</h3>
+            <p class="post-excerpt text-neutral-400 mb-4">{{post.excerpt}}</p>
+
+            <div class="post-footer d-flex align-items-center justify-content-between pt-3">
+              <div class="author-box d-flex align-items-center gap-2">
+                <img [src]="post.author.avatar" class="author-img">
+                <div>
+                  <h6 class="author-name mb-0">{{post.author.name}}</h6>
+                  <small class="text-neutral-500">{{post.author.role}}</small>
+                </div>
+              </div>
+              <div class="arrow-btn">
+                <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                  style="transform: rotate(180deg);">
+                  <path d="M9 5l7 7-7 7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                </svg>
+              </div>
+            </div>
+          </div>
+        </article>
+      </div>
+      }
+    </div>
+
+<nav class="pagination-wrapper mt-5 text-center">
+<div class="d-flex justify-content-center gap-2 mb-3">
+  <button class="btn btn-page" [disabled]="currentPage === 1" (click)="goToPage(currentPage - 1)">
+    <i class="bi bi-chevron-right"></i>
+  </button>
+
+  @for (p of [].constructor(totalPages); track $index) {
+    <button class="btn btn-page"
+            [class.active]="currentPage === $index + 1"
+            (click)="goToPage($index + 1)">
+      {{ $index + 1 }}
+    </button>
+  }
+
+  <button class="btn btn-page" [disabled]="currentPage === totalPages" (click)="goToPage(currentPage + 1)">
+    <i class="bi bi-chevron-left"></i>
+  </button>
+</div>
+  <p class="text-neutral-500 small">صفحة {{currentPage}} من {{totalPages}}</p>
+</nav>
+  </section>
+</main>
+}
+
+<!-- @if(flag){
+  <main class="flex-grow pt-5 bg-black" >
+  <article class="bg-[#0a0a0a] min-h-screen">
+    <div class="header-hero position-relative overflow-hidden">
+      <img [src]="post.image" class="hero-bg-img" [alt]="post.title">
+      <div class="hero-overlay"></div>
+
+      <div class="container pt-4 position-relative z-2">
+        <nav class="breadcrumb-nav d-inline-flex gap-2 px-3 py-2 rounded-pill backdrop-blur">
+          <a routerLink="/" class="text-white-50"><i class="bi bi-house"></i></a>
+          <span class="text-white-50">/</span>
+          <a routerLink="/blog" class="text-white-50">المدونة</a>
+          <span class="text-white-50">/</span>
+          <span class="text-orange">{{ post.category }}</span>
+        </nav>
+      </div>
+
+      <div class="container position-absolute bottom-0 start-0 end-0 pb-5">
+        <div class="max-w-5xl mx-auto px-3">
+          <div class="d-flex align-items-center gap-3 mb-4">
+            <span class="badge bg-orange px-3 py-2">{{ post.category }}</span>
+            <span class="text-white-50 small"><i class="bi bi-calendar"></i> {{ post.date }}</span>
+          </div>
+          <h1 class="display-3 fw-bold text-white mb-4">{{ post.title }}</h1>
+
+          <div class="author-card-glass d-flex align-items-center gap-3 p-3">
+            <img [src]="post.author.avatar" class="author-img-large">
+            <div>
+              <p class="m-0 fw-bold text-white">{{ post.author.name }}</p>
+              <p class="m-0 text-white-50 small">{{ post.author.role }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container py-5">
+      <div class="row g-5">
+        <div class="col-lg-8 order-2 order-lg-1">
+          <div class="content-intro p-4 rounded-4 mb-5">
+            <p class="lead italic text-neutral-200">"{{ post.excerpt }}"</p>
+          </div>
+
+          <div class="article-body text-neutral-300 h5 lh-lg" [innerHTML]="post.content">
+          </div>
+
+          <div class="tags-box p-4 rounded-4 mt-5">
+            <h5 class="text-white mb-3"><i class="bi bi-tags"></i> الوسوم</h5>
+            <div class="d-flex flex-wrap gap-2">
+              @for (tag of post.tags; track $index) {
+              <span class="tag-item">#{{ tag }}</span>
+              }
+            </div>
+          </div>
+        </div>
+
+        <aside class="col-lg-4 order-1 order-lg-2">
+          <div class="sticky-top" style="top: 100px;">
+            <div class="sidebar-widget p-4 rounded-4 mb-4">
+              <h5 class="text-white mb-4"><i class="bi bi-list-ul"></i> محتويات المقال</h5>
+              <ul class="list-unstyled">
+                @for (section of post.category; track $index) {
+                   <li class="mb-2">
+                  <a [href]="'#section-' + $index" class="sidebar-link">
+                    <span class="index-box">{{ $index + 1 }}</span> {{ section.title }}
+                  </a>
+                </li>
+                }
+              </ul>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </article>
+</main>
+} -->
+
+
+@if (flag) {<main class="blog-detail-page pt-5" dir="rtl">
+  <article >
+    <div class="hero-wrapper">
+      <img [src]="selectedPost.image" class="hero-img" [alt]="selectedPost.title">
+      <div class="hero-overlay-grad"></div>
+
+      <div class="container position-absolute top-0 start-0 end-0 mt-4 z-3">
+        <nav class="breadcrumb-glass d-inline-flex align-items-center gap-2">
+          <a routerLink="/" class="text-white-50"><i class="fa-solid fa-house"></i></a>
+          <span class="text-white-25">/</span>
+          <a (click)="selectedPost = null; flag = 0" class="text-white-50 cursor-pointer">المدونة</a>
+          <span class="text-white-25">/</span>
+          <span class="text-warning fw-medium">{{selectedPost.category}}</span>
+        </nav>
+      </div>
+
+      <div class="container position-absolute bottom-0 start-0 end-0 pb-5">
+        <div class="row">
+          <div class="col-lg-10 mx-auto">
+            <div class="d-flex flex-wrap align-items-center gap-3 mb-4">
+              <span class="badge rounded-pill bg-orange px-3 py-2" style="background-color: var(--orange-main);">
+                {{selectedPost.category}}
+              </span>
+              <div class="text-white-50 small">
+                <span class="me-3"><i class="fa-regular fa-calendar me-1"></i> {{selectedPost.date}}</span>
+                <span><i class="fa-regular fa-clock me-1"></i> {{selectedPost.readTime}}</span>
+              </div>
+            </div>
+            <h1 class="display-4 fw-bold text-white mb-5">{{selectedPost.title}}</h1>
+
+            <div class="glass-panel d-inline-flex align-items-center gap-3 p-3">
+              <img [src]="selectedPost.author.avatar" class="author-img-ring">
+              <div>
+                <p class="m-0 fw-bold text-white">{{selectedPost.author.name}}</p>
+                <p class="m-0 text-white-50 small">{{selectedPost.author.role}}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container py-5 mt-4">
+      <div class="row g-5">
+        <div class="col-lg-8 order-2 order-lg-1">
+          <div class="p-4 rounded-4 mb-5" style="background: linear-gradient(to right, rgba(249,115,22,0.1), rgba(234,88,12,0.05)); border: 1px solid rgba(249,115,22,0.2);">
+            <p class="fst-italic text-light opacity-75 fs-5">"{{selectedPost.excerpt}}"</p>
+          </div>
+
+          <div class="article-body" [innerHTML]="selectedPost.content"></div>
+
+          <div class="sidebar-widget mt-5">
+            <h5 class="text-white mb-4"><i class="fa-solid fa-tags text-orange-main me-2"></i> الوسوم</h5>
+            <div class="d-flex flex-wrap gap-2">
+          @for (tag of selectedPost.tags; track $index) {
+                <a  class="tag-pill">#{{tag}}</a>
+          }
+            </div>
+          </div>
+        </div>
+
+        <aside class="col-lg-4 order-1 order-lg-2">
+          <div class="sticky-top" style="top: 100px;">
+            <div class="sidebar-widget mb-4">
+              <div class="row g-2">
+                <div class="col-6 text-center p-3 rounded-3" style="background: #0a0a0a;">
+                  <i class="fa-regular fa-clock text-warning mb-2 d-block fs-4"></i>
+                  <span class="text-white fw-bold small d-block">{{selectedPost.readTime}}</span>
+                  <span class="text-white-50 x-small">وقت القراءة</span>
+                </div>
+                <div class="col-6 text-center p-3 rounded-3" style="background: #0a0a0a;">
+                  <i class="fa-regular fa-calendar text-warning mb-2 d-block fs-4"></i>
+                  <span class="text-white fw-bold small d-block">{{selectedPost.date}}</span>
+                  <span class="text-white-50 x-small">تاريخ النشر</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="sidebar-widget" style="background: linear-gradient(135deg, rgba(249,115,22,0.1), rgba(234,88,12,0.05)); border-color: rgba(249,115,22,0.2);">
+              <div class="text-center">
+                <h5 class="text-white mb-2">لا تفوّت جديدنا</h5>
+                <p class="text-white-50 small mb-4">اشترك للحصول على أحدث المقالات والدروس</p>
+                <button (click)="selectedPost = null" class="btn btn-warning w-100 fw-bold py-3 rounded-3" style="background-color: var(--orange-main); border:none;">تصفح المزيد</button>
+              </div>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </article>
+</main>}

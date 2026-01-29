@@ -1,0 +1,104 @@
+:host {
+  display: block;
+  background-color: #0a0a0a;
+  border-bottom: 1px solid #262626;
+}
+
+.custom-nav {
+  .logo-wrapper {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+
+      }
+     &:hover { transform: scale(1.05); }
+  }
+
+  .brand-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    background: linear-gradient(to right, #ffffff, #d4d4d4);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .brand-subtitle {
+    font-size: 0.75rem;
+    color: rgba(249, 115, 22, 0.8);
+    letter-spacing: 0.5px;
+  }
+
+
+  .nav-pill-container {
+    background-color: #161616;
+    border: 1px solid #262626;
+    padding: 5px;
+    border-radius: 50px;
+  }
+    .nav-link {
+      color: #a3a3a3 !important;
+      padding: 8px 20px !important;
+      font-size: 0.875rem;
+      font-weight: 500;
+      border-radius: 50px;
+      transition: all 0.3s ease;
+    }
+
+      .nav-link:hover { color: #ffffff !important; }
+
+      .nav-link.active {
+        background: linear-gradient(to right, #f97316, #ea580c);
+        color: #ffffff !important;
+      }
+
+
+
+
+  .btn-search {
+    color: #737373;
+    padding: 10px;
+    border-radius: 12px;
+    border: 1px solid transparent;
+    transition: all 0.3s;
+
+    &:hover {
+      color: #f97316;
+      background-color: #161616;
+      border-color: #262626;
+    }
+  }
+
+
+  .btn-gradient {
+    background: linear-gradient(to right, #f97316, #ea580c);
+    color: #ffffff;
+    padding: 10px 24px;
+    border-radius: 12px;
+    font-size: 0.875rem;
+    font-weight: 500;
+    text-decoration: none;
+    transition: opacity 0.3s;
+    &:hover { opacity: 0.9; }
+  }
+
+
+.mobile-nav-dropdown {
+    background-color: #161616;
+    border-top: 1px solid #262626;
+
+    .mobile-link {
+        display: block;
+        padding: 12px;
+        color: #a3a3a3;
+        text-decoration: none;
+        border-bottom: 1px solid rgba(38, 38, 38, 0.5);
+
+        &:hover { color: #ffffff; }
+    }
+}
+.active{
+  background: linear-gradient(to right, #f97316, #ea580c);
+  color: #ffffff !important;
+}

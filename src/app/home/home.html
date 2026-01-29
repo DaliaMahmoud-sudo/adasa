@@ -1,0 +1,300 @@
+<section class="hero-section">
+  <div class="grid-overlay"></div>
+
+  <div class="blob blob-1"></div>
+  <div class="blob blob-2"></div>
+  <div class="blob blob-3"></div>
+
+  <div class="container relative-content">
+    <div class="text-center mx-auto max-width-800">
+
+      <div class="welcome-label mb-4">
+        <span class="ping-container">
+          <span class="ping-circle"></span>
+          <span class="ping-dot"></span>
+        </span>
+        <span class="welcome-text">مرحباً بك في عدسة</span>
+      </div>
+
+      <h1 class="hero-title mb-4">
+        اكتشف <span class="text-gradient">فن</span><br>التصوير الفوتوغرافي
+      </h1>
+
+      <p class="hero-subtitle mb-5">
+        انغمس في أسرار المحترفين ونصائح عملية لتطوير مهاراتك في التصوير.
+      </p>
+
+      <div class="d-flex flex-column flex-sm-row justify-content-center gap-3 mb-5">
+        <a routerLink="/blog" routerLinkActive="active" title="Blog" class="btn-hero-primary">
+          <span>استكشف المقالات</span>
+          <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="transform: rotate(180deg);">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+          </svg>
+        </a>
+        <a routerLink="/about" class="btn-hero-secondary">
+          <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+          </svg>
+          <span>اعرف المزيد</span>
+        </a>
+      </div>
+
+      <div class="row g-3 max-width-700 mx-auto mt-5">
+        <div class="col-6 col-md-3">
+          <div class="glass-stat-card">
+            <div class="stat-value text-gradient">+50</div>
+            <div class="stat-label">مقالة</div>
+          </div>
+        </div>
+        <div class="col-6 col-md-3">
+          <div class="glass-stat-card">
+            <div class="stat-value text-gradient">+10ألف</div>
+            <div class="stat-label">قارئ</div>
+          </div>
+        </div>
+        <div class="col-6 col-md-3">
+          <div class="glass-stat-card">
+            <div class="stat-value">4</div>
+            <div class="stat-label">تصنيفات</div>
+          </div>
+        </div>
+        <div class="col-6 col-md-3">
+          <div class="glass-stat-card">
+            <div class="stat-value">6</div>
+            <div class="stat-label">كاتب</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+<section class="featured-section py-5">
+  <div class="side-glow"></div>
+
+  <div class="container relative-content">
+    <div class="d-flex flex-column flex-md-row justify-content-between align-items-start align-items-md-end mb-5 gap-4">
+      <div>
+        <div class="welcome-label mb-3">
+          <span class="ping-container ml-2">
+            <span class="ping-circle"></span>
+            <span class="ping-dot"></span>
+          </span>
+          <span class="welcome-text">مميز</span>
+        </div>
+        <h2 class="section-title text-white fw-bold">مقالات مختارة</h2>
+        <p class="section-subtitle text-neutral-400">محتوى منتقى لبدء رحلة تعلمك</p>
+      </div>
+
+      <a routerLink="/blog" class="btn-view-all">
+        عرض الكل
+        <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24" class="rotate-180 icon-move">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+        </svg>
+      </a>
+    </div>
+
+    <div class="articles-stack">
+
+ @for (post of featuredPosts; track post.id){
+  <article class="article-card group">
+        <a class="text-decoration-none">
+          <div class="row g-0">
+            <div class="col-md-6 overflow-hidden position-relative h-400">
+              <img [src]="post.image"
+                   alt="Golden Hour" class="card-img-cover">
+              <div class="img-overlay"></div>
+              <span class="badge-featured">
+                <i class="bi bi-star-fill me-1"></i> مميز
+              </span>
+            </div>
+            <div class="col-md-6 p-4 p-md-5 d-flex flex-column justify-content-center">
+              <div class="d-flex items-center gap-3 mb-3">
+                <span class="cat-tag">{{post.category}}</span>
+                <span class="read-time"><i class="bi bi-clock me-1"></i> {{post.readTime}}</span>
+              </div>
+              <h3 class="card-heading">{{post.title}}</h3>
+              <p class="card-excerpt">{{post.excerpt}}</p>
+
+              <div class="d-flex align-items-center justify-content-between mt-4">
+                <div class="d-flex align-items-center gap-3">
+                  <div class="author-avatar">
+                    <img [src]="post.author.avatar" alt="Author">
+                    <span class="status-dot"></span>
+                  </div>
+                  <div>
+                    <p class="author-name">{{post.author.name}} </p>
+                    <p class="post-date">{{post.date}}</p>
+                  </div>
+                </div>
+                <span class="read-more">اقرأ المقال <i class="bi bi-arrow-left"></i></span>
+              </div>
+            </div>
+          </div>
+        </a>
+      </article>
+ }
+
+      </div>
+  </div>
+</section>
+<section class="categories-section py-5">
+  <div class="container">
+
+    <div class="text-center mb-5">
+      <div class="welcome-label mb-3 d-inline-flex mx-auto">
+        <span class="ping-container ml-2">
+          <span class="ping-circle"></span>
+          <span class="ping-dot"></span>
+        </span>
+        <span class="welcome-text">التصنيفات</span>
+      </div>
+      <h2 class="section-title text-white fw-bold">استكشف حسب الموضوع</h2>
+      <p class="section-subtitle text-neutral-500 mx-auto">اعثر على محتوى مصمم حسب اهتماماتك</p>
+    </div>
+
+    <div class="row g-4">
+
+      @for (category of categories; track $index) {
+      <div class="col-6 col-md-4 col-lg-3">
+        <a  class="category-card group">
+          <div class="hover-gradient"></div>
+
+          <div class="card-content">
+            <div class="icon-box">
+              <i class="bi bi-brightness-high fs-4"></i>
+            </div>
+
+            <h3 class="cat-name">{{category.name}}</h3>
+            <p class="cat-count">{{category.count}} مقالة</p>
+
+            <div class="arrow-indicator">
+              <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24" class="rotate-180">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+              </svg>
+            </div>
+          </div>
+        </a>
+      </div>
+      }
+
+
+
+      </div>
+  </div>
+</section>
+<section class="latest-section py-5">
+  <div class="bottom-glow"></div>
+
+  <div class="container relative-content">
+    <div class="d-flex flex-column flex-md-row justify-content-between align-items-start align-items-md-end mb-5 gap-4">
+      <div>
+        <div class="welcome-label mb-3">
+          <span class="ping-container ml-2">
+            <span class="ping-circle"></span>
+            <span class="ping-dot"></span>
+          </span>
+          <span class="welcome-text">الأحدث</span>
+        </div>
+        <h2 class="section-title text-white fw-bold">أحدث المقالات</h2>
+        <p class="section-subtitle text-neutral-400">محتوى جديد طازج من المطبعة</p>
+      </div>
+
+      <a routerLink="/blog" class="link-view-all">
+        عرض جميع المقالات
+        <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24" class="rotate-180 icon-slide">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+        </svg>
+      </a>
+    </div>
+
+    <div class="row g-4">
+      @for(post of latestPosts; track post.id){
+
+      <div class="col-md-6 col-lg-4">
+        <article class="latest-card group">
+          <a routerLink="/blog/camera-settings-basics" class="text-decoration-none">
+            <div class="card-img-wrapper">
+              <img [src]="post.image"
+                   alt="Camera Settings" class="card-img">
+              <div class="img-gradient-overlay"></div>
+              <span class="category-badge">{{post.category}}</span>
+            </div>
+
+            <div class="card-body-custom">
+              <div class="meta-info mb-3">
+                <span class="d-flex align-items-center gap-1">
+                  <i class="bi bi-clock"></i> {{post.readTime}} دقائق للقراءة
+                </span>
+                <span class="meta-divider"></span>
+                <span>{{post.date}}</span>
+              </div>
+
+              <h3 class="card-title-text">{{post.title}}</h3>
+              <p class="card-description">{{post.excerpt}}</p>
+
+              <div class="card-footer-custom">
+                <div class="author-info">
+                  <img [src]="post.author.avatar" alt="Author">
+                  <div>
+                    <p class="author-name-small">{{post.author.name}}</p>
+                    <p class="author-role">{{post.author.role}}</p>
+                  </div>
+                </div>
+                <div class="arrow-btn">
+                  <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24" class="rotate-180">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                  </svg>
+                </div>
+              </div>
+            </div>
+          </a>
+        </article>
+      </div>
+      }
+
+      </div>
+  </div>
+</section>
+<section class="newsletter-section py-5">
+  <div class="top-center-glow"></div>
+
+  <div class="container relative-content">
+    <div class="newsletter-card mx-auto">
+
+      <div class="newsletter-icon-box mb-4">
+        <svg width="32" height="32" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+        </svg>
+      </div>
+
+      <h2 class="section-title text-white fw-bold mb-3">
+        اشترك في <span class="text-gradient">نشرتنا الإخبارية</span>
+      </h2>
+      <p class="newsletter-subtitle mb-4 mx-auto">
+        احصل على نصائح التصوير الحصرية ودروس جديدة مباشرة في بريدك الإلكتروني
+      </p>
+
+      <form class="newsletter-inline-form mb-4 mx-auto">
+        <input type="email" placeholder="أدخل بريدك الإلكتروني" class="form-input">
+        <button type="submit" class="btn-subscribe">اشترك الآن</button>
+      </form>
+
+      <div class="d-flex flex-wrap justify-content-center align-items-center gap-3 social-proof-text">
+        <div class="d-flex align-items-center gap-2">
+          <div class="avatar-stack d-flex">
+            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=32&h=32&fit=crop" alt="User" class="stack-img">
+            <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=32&h=32&fit=crop" alt="User" class="stack-img">
+            <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=32&h=32&fit=crop" alt="User" class="stack-img">
+          </div>
+          <span>انضم لـ <span class="text-white fw-bold">+10,000</span> مصور</span>
+        </div>
+        <span class="d-none d-sm-inline dot-separator">•</span>
+        <span>بدون إزعاج</span>
+        <span class="d-none d-sm-inline dot-separator">•</span>
+        <span>إلغاء الاشتراك في أي وقت</span>
+      </div>
+
+    </div>
+  </div>
+</section>

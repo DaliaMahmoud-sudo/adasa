@@ -1,0 +1,71 @@
+<main class="flex-grow pt-5 bg-black" *ngIf="post">
+  <article class="bg-[#0a0a0a] min-h-screen">
+    <div class="header-hero position-relative overflow-hidden">
+      <img [src]="post.image" class="hero-bg-img" [alt]="post.title">
+      <div class="hero-overlay"></div>
+
+      <div class="container pt-4 position-relative z-2">
+        <nav class="breadcrumb-nav d-inline-flex gap-2 px-3 py-2 rounded-pill backdrop-blur">
+          <a routerLink="/" class="text-white-50"><i class="bi bi-house"></i></a>
+          <span class="text-white-50">/</span>
+          <a routerLink="/blog" class="text-white-50">المدونة</a>
+          <span class="text-white-50">/</span>
+          <span class="text-orange">{{ post.category }}</span>
+        </nav>
+      </div>
+
+      <div class="container position-absolute bottom-0 start-0 end-0 pb-5">
+        <div class="max-w-5xl mx-auto px-3">
+          <div class="d-flex align-items-center gap-3 mb-4">
+            <span class="badge bg-orange px-3 py-2">{{ post.category }}</span>
+            <span class="text-white-50 small"><i class="bi bi-calendar"></i> {{ post.date }}</span>
+          </div>
+          <h1 class="display-3 fw-bold text-white mb-4">{{ post.title }}</h1>
+
+          <div class="author-card-glass d-flex align-items-center gap-3 p-3">
+            <img [src]="post.author.avatar" class="author-img-large">
+            <div>
+              <p class="m-0 fw-bold text-white">{{ post.author.name }}</p>
+              <p class="m-0 text-white-50 small">{{ post.author.role }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container py-5">
+      <div class="row g-5">
+        <div class="col-lg-8 order-2 order-lg-1">
+          <div class="content-intro p-4 rounded-4 mb-5">
+            <p class="lead italic text-neutral-200">"{{ post.excerpt }}"</p>
+          </div>
+
+          <div class="article-body text-neutral-300 h5 lh-lg" [innerHTML]="post.content">
+          </div>
+
+          <div class="tags-box p-4 rounded-4 mt-5">
+            <h5 class="text-white mb-3"><i class="bi bi-tags"></i> الوسوم</h5>
+            <div class="d-flex flex-wrap gap-2">
+              <span *ngFor="let tag of post.tags" class="tag-pill">#{{ tag }}</span>
+            </div>
+          </div>
+        </div>
+
+        <aside class="col-lg-4 order-1 order-lg-2">
+          <div class="sticky-top" style="top: 100px;">
+            <div class="sidebar-widget p-4 rounded-4 mb-4">
+              <h5 class="text-white mb-4"><i class="bi bi-list-ul"></i> محتويات المقال</h5>
+              <ul class="list-unstyled">
+                <li *ngFor="let section of post.sections; let i = index" class="mb-2">
+                  <a [href]="'#section-' + i" class="sidebar-link">
+                    <span class="index-box">{{ i + 1 }}</span> {{ section.title }}
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </article>
+</main>
